@@ -2,6 +2,7 @@
 name: Jakarta REST CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
   pull_request:
@@ -10,7 +11,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04-ppc64le
     strategy:
       matrix:
         java: ['17', '21' ]
@@ -21,6 +22,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: ${{ matrix.java }}
+        architecture: 'ppc64le'
         distribution: 'temurin'
     - name: Build with Maven
       run: mvn -B -ntp clean verify -Djaxrs.all.build
