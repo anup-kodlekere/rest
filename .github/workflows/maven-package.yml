@@ -25,4 +25,6 @@ jobs:
         architecture: 'ppc64le'
         distribution: 'temurin'
     - name: Build with Maven
-      run: mvn -B -ntp clean verify -Djaxrs.all.build
+      run: |
+        sudo apt-get install maven
+        mvn -B -ntp clean verify -Djaxrs.all.build
