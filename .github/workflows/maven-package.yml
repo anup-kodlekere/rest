@@ -26,5 +26,5 @@ jobs:
         distribution: 'temurin'
     - name: Build with Maven
       run: |
-        sudo apt-get install maven
+        sudo apt-get install -y maven
         mvn -B -ntp clean verify -Djaxrs.all.build
